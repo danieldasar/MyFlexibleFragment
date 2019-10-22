@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,10 +43,10 @@ public class CategoryFragment extends Fragment implements View.OnClickListener{
             mDetailCategoryFragment.setArguments(mBundle);
             mDetailCategoryFragment.setDescription(description);
             FragmentManager mFragmentManager = getFragmentManager();
-            FragmentManager mFragmentTransaction = mFragmentManager.beginTransaction();
-            mFragmentTransaction.replace(R.id.frame_container, mDetailCategoryFragment, DetailCategoryFragment.class.getSimpleName());
-            mFragmentTransaction.addToBackStuck(null);
-            mFragmentTransaction.commit();
+            FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
+            ((FragmentTransaction) mFragmentTransaction).replace(R.id.frame_container, mDetailCategoryFragment, DetailCategoryFragment.class.getSimpleName());
+            mFragmentTransaction.addToBackStack(null);
+            ((FragmentTransaction) mFragmentTransaction).commit();
         }
     }
 }

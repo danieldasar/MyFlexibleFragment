@@ -50,6 +50,11 @@ public class DetailCategoryFragment extends Fragment implements View.OnClickList
         View view = inflater.inflate(R.layout.fragment_detail_category, container, false);
         tvCategoryName = (TextView)view.findViewById(R.id.tv_category_name);
         tvCategoryDescription = (TextView)view.findViewById(R.id.tv_category_description);
+        btnProfile = (Button) view.findViewById(R.id.btn_profile);
+        btnProfile.setOnClickListener(this);
+        btnShowDialog = (Button) view.findViewById(R.id.btn_show_dialog);
+        btnShowDialog.setOnClickListener(this);
+        return  view;
     }
 
     @Override
@@ -62,15 +67,23 @@ public class DetailCategoryFragment extends Fragment implements View.OnClickList
 
             case R.id.btn_show_dialog:
                 OptionDialogFragment mOptionDialogFragment = new OptionDialogFragment();
-                mOptionDialogFragment.setOnOptionDialogListener(new OptionDialogFragment.OnptionaDialogListener(){
-                    @Override
-                    public void onOptionChoosen(String text) {
-                        Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
-                    }
-                });
+//                mOptionDialogFragment.setOnOptionDialogListener(new OptionDialogFragment.OnptionaDialogListener(){
+//                    @Override
+//                    public void onOptionChoosen(String text) {
+//                        Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
+//                    }
+//                });
                 FragmentManager mFragmentManager = getChildFragmentManager();
                 mOptionDialogFragment.show(mFragmentManager,OptionDialogFragment.class.getSimpleName());
                 break;
+        }
+    }
+
+    private class ProfileFragment {
+    }
+
+    private class OptionDialogFragment {
+        public void show(FragmentManager mFragmentManager, String simpleName) {
         }
     }
 }
